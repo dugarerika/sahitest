@@ -9,15 +9,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.interactions.Actions;
 
 public class Utilities {
 	public static WebDriver driver;
+	private static Actions ac;
+
 	
 	public static void openUrl(String strUrl){
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.get(strUrl);
 		driver.manage().window().maximize();
+		ac = new Actions(driver);
 	}
 
 	public static boolean isElementPresent(By by) {
@@ -37,6 +42,7 @@ public class Utilities {
 	public static WebElement el(By by) {
 		return driver.findElement((By) by);
 	}
+
 
 	public static String base64Screenshot(){
 		return "data:image/png;base64," + ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
@@ -75,6 +81,22 @@ public class Utilities {
 	
 	public static void click(By by) {
 		el(by).click();
+	}
+
+	public static void clickEnter(By by) {
+		el(by).click();
+		ac.sendKeys(Keys.ENTER).perform();
+	}
+
+	public static void Enter() {
+
+		ac.sendKeys(Keys.ENTER).perform();
+	}
+
+	public static void clickType(By by) {
+		el(by).click();
+		ac.sendKeys(el(by),"Al Salam").perform();
+//		ac.sendKeys(Keys.ENTER).perform();
 	}
 	
 	public static String getText(By by) {
@@ -121,12 +143,20 @@ public class Utilities {
 		objSelect.selectByIndex(n);
 	}
 
+
+	public static void printer(By by) {
+		String text = getText(by);
+		System.out.print(text);
+	}
+
 	public static boolean compareText(By by, String str) {
 		String text = getText(by);
+		System.out.print(str);
 		if (str.equals(text)) {
-			return true;
+			System.out.print("true");
+
 		}
-		else{ return false;
-		}
+		else System.out.print("false");
+		return false;
 	}
 	}
