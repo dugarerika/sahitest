@@ -89,7 +89,6 @@ public class Utilities {
 	}
 
 	public static void Enter() {
-
 		ac.sendKeys(Keys.ENTER).perform();
 	}
 
@@ -151,12 +150,12 @@ public class Utilities {
 
 	public static boolean compareText(By by, String str) {
 		String text = getText(by);
-		System.out.print(str);
+		System.out.println(str);
 		if (str.equals(text)) {
-			System.out.print("true");
-
+			System.out.println("true");
+			return true;
 		}
-		else System.out.print("false");
+		else System.out.println("false");
 		return false;
 	}
 	}
