@@ -5,31 +5,43 @@ import utils.Utilities;
 
 public class Inventory {
 
-    private final By INVENTORY = By.xpath("//div[@aria-label='Inventory']");
+    private final By INVENTORY = By.xpath("//*[@id='__next']/div/div/div/ul/div[@aria-label='Inventory']");
     private final By ADDBRAND = By.xpath("//button[text()='Add Brand']");
-    private final By ADDBRANICON = By.xpath("//div/div/div[@role]/div/button");
+    private final By MNGBRANDEDIT = By.xpath("//*/button/i[@class='fal fa-edit fa-xs']");
+    private final By MNGBRANDDELETE = By.xpath("/html/body/div[5]/div[3]/div/div[2]/div/div[2]/div/button[2]/i");
+    private final By BRANDDELETE = By.xpath("//*/button[text()='Delete']");
+    private final By MNGBRANDCLOSE = By.xpath("//div[3]/div/button/i[@class='fal fa-times']");
+
+    private final By ADDPRODUCT = By.xpath("//button[text()='Add Product']");
     //private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
 
 
-    public Inventory fillInventory(String strUserName, String strPassword){
-        Utilities.type(, strUserName);
-        Utilities.type(,strPassword);
-
-        return this;
-    }
+//    public Inventory fillInventory(String strUserName, String strPassword){
+//        Utilities.type(, strUserName);
+//        Utilities.type(,strPassword);
+//
+//        return this;
+//    }
 
     public Inventory btnInventory(){
-        Utilities.click(INVENTORY);
+        Utilities.clickWait(INVENTORY);
         return this;
     }
 
     public Inventory btnAddBrand(){
-        Utilities.click(ADDBRAND);
+        Utilities.clickWait(ADDBRAND);
+        Utilities.clickWait(MNGBRANDCLOSE);
         return this;
     }
 
-    public Inventory btnAddBrandIcon(){
-        Utilities.click(ADDBRANICON);
+    public Inventory btnAddBrand2(){
+        Utilities.clickWait(ADDBRAND);
+        Utilities.clickWait(MNGBRANDDELETE);
+        Utilities.clickWait(BRANDDELETE);
+        return this;
+    }
+    public Inventory btnAddProduct(){
+        Utilities.clickWait(ADDPRODUCT);
         return this;
     }
 

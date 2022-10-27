@@ -3,11 +3,12 @@ package testcases;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-import pom.RegisterSahiTest;
+import pom.RegisterSanityTest;
+import pom.RegisterSanityTest;
 import utils.Utilities;
 
 public class TestRegister {
-        RegisterSahiTest objRegister = new RegisterSahiTest();
+        RegisterSanityTest objRegister = new RegisterSanityTest();
 
         String[] infoForm = new String[]{
                 "test",

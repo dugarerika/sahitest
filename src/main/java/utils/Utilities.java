@@ -11,15 +11,19 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 
 public class Utilities {
 	public static WebDriver driver;
 	private static Actions ac;
+	public static WebDriverWait wait;
 
 	
 	public static void openUrl(String strUrl){
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
+		wait = new WebDriverWait(driver, 10);
 		driver.get(strUrl);
 		driver.manage().window().maximize();
 		ac = new Actions(driver);
@@ -83,6 +87,10 @@ public class Utilities {
 		el(by).click();
 	}
 
+	public static void clickWait(By by) {
+		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+	}
+
 	public static void clickEnter(By by) {
 		el(by).click();
 		ac.sendKeys(Keys.ENTER).perform();
@@ -96,6 +104,10 @@ public class Utilities {
 		el(by).click();
 		ac.sendKeys(el(by),"Al Salam").perform();
 //		ac.sendKeys(Keys.ENTER).perform();
+	}
+
+	public static void hoover(By by) {
+		ac.moveToElement(el(by)).click();
 	}
 	
 	public static String getText(By by) {

@@ -11,8 +11,8 @@ public class TestLogInVendor {
     LoginVendor objLogin = new LoginVendor();
 
     String[] rightdata = new String[]{
-            "newvendor@gmail.com",
-            "newvendor1o"};
+            "testsalon",
+            "testsalon1o"};
 
     String[] wrongdata = new String[]{
             "testx",
@@ -26,7 +26,6 @@ public class TestLogInVendor {
     public void testLogInSucessfully() {
         objLogin.fillLogin(rightdata[0], rightdata[1]);
         objLogin.btnlogInVendor();
-        Utilities.wt( 100000);
     }
 
     @Test
