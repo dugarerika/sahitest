@@ -1,16 +1,14 @@
 package testcases;
 
-import org.testng.annotations.AfterMethod;
+import Steps.StepsLogInVendor;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
-
 import pom.Inventory;
-import pom.LoginVendor;
 import utils.Utilities;
 
 public class TestInventoryVendor {
 
-    TestLogInVendor objLogin = new TestLogInVendor();
+    StepsLogInVendor objLogin = new StepsLogInVendor();
     String strUrl = "https://master.bookr-dev.com";
 
     Inventory objInventory = new Inventory();
@@ -21,14 +19,14 @@ public class TestInventoryVendor {
     }
     @Test
     public void testClickOnInventory() {
-        objLogin.testLogInSucessfully();
+
         objInventory.btnInventory();
         objInventory.btnAddBrand();
     }
 
     @Test
     public void testClickOnInventory2() {
-        objLogin.testLogInSucessfully();
+
         objInventory.btnInventory();
         objInventory.btnAddBrand2();
     }

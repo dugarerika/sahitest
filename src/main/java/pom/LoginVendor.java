@@ -1,6 +1,9 @@
 package pom;
+
 import org.openqa.selenium.By;
 import utils.Utilities;
+
+import java.util.Objects;
 
 public class LoginVendor{
     private final By USERNAME = By.xpath("//input[@name='username']");
@@ -8,7 +11,7 @@ public class LoginVendor{
     private final By LOGIN = By.xpath("//button[text()='Sign in']");
     private final By MESSAGEUSERNAME = By.id("mui-1-helper-text");
     private final By MESSAGEPWD = By.id("mui-2-helper-text");
-    private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
+    private final By MESSAGEERROR = By.xpath("//div/p[@class='styles_error__1kXZV']");
 
 
     public LoginVendor fillLogin(String strUserName, String strPassword){
@@ -23,12 +26,14 @@ public class LoginVendor{
     }
 
     public LoginVendor chckMessageVendor(String message1, String message2 ) {
-        Utilities.compareText(MESSAGEUSERNAME, message1);
-        Utilities.compareText(MESSAGEPWD, message2);
+        Utilities.wt( 100);
+        if((!Objects.equals(message1, " "))) Utilities.compareText(MESSAGEUSERNAME, message2);
+        if((!Objects.equals(message2, " "))) Utilities.compareText(MESSAGEPWD, message1);
         return this;
     }
 
     public LoginVendor chckMessageError(String message3) {
+        Utilities.wt( 1000);
         Utilities.compareText(MESSAGEERROR, message3);
         return this;
     }

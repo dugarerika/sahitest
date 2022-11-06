@@ -1,17 +1,16 @@
 package utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 
 public class Utilities {
@@ -23,7 +22,7 @@ public class Utilities {
 	public static void openUrl(String strUrl){
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
-		wait = new WebDriverWait(driver, 10);
+//		wait = new WebDriverWait(driver, 10);
 		driver.get(strUrl);
 		driver.manage().window().maximize();
 		ac = new Actions(driver);
@@ -31,7 +30,7 @@ public class Utilities {
 
 	public static boolean isElementPresent(By by) {
 		try {
-			WebDriverWait wait = new WebDriverWait(driver, 1);
+//			WebDriverWait wait = new WebDriverWait(driver, 1);
 			wait.until(ExpectedConditions.or(ExpectedConditions.presenceOfElementLocated(by),
 					ExpectedConditions.elementToBeSelected(by),
 					ExpectedConditions.invisibilityOfElementLocated(by),
@@ -64,12 +63,12 @@ public class Utilities {
 		}
 	}
 
-	public static void waitForElement(By by, long timeOutInSeconds) {
-		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
-		wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(by),
-				ExpectedConditions.elementToBeSelected(by), 
-				ExpectedConditions.presenceOfNestedElementLocatedBy(by, null)));
-	}
+//	public static void waitForElement(By by, long timeOutInSeconds) {
+//		WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+//		wait.until(ExpectedConditions.or(ExpectedConditions.elementToBeClickable(by),
+//				ExpectedConditions.elementToBeSelected(by),
+//				ExpectedConditions.presenceOfNestedElementLocatedBy(by, null)));
+//	}
 		
 	public static void closeExplorer() {
 		driver.close();

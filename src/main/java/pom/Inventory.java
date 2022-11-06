@@ -7,11 +7,11 @@ public class Inventory {
 
     private final By INVENTORY = By.xpath("//*[@id='__next']/div/div/div/ul/div[@aria-label='Inventory']");
     private final By ADDBRAND = By.xpath("//button[text()='Add Brand']");
-    private final By MNGBRANDEDIT = By.xpath("//*/button/i[@class='fal fa-edit fa-xs']");
-    private final By MNGBRANDDELETE = By.xpath("/html/body/div[5]/div[3]/div/div[2]/div/div[2]/div/button[2]/i");
+    private final By MNGBRANDEDIT = By.xpath("//span[text()='LOL']//following-sibling::div/button[@aria-label='Edit']/i");
+    private final By MNGBRANDDELETE = By.xpath("//span[text()='LOL']//following-sibling::div/button[@aria-label='Delete']/i");
     private final By BRANDDELETE = By.xpath("//*/button[text()='Delete']");
+    private final By BRANDACEPTE = By.xpath("//*/button[text()='Delete']");
     private final By MNGBRANDCLOSE = By.xpath("//div[3]/div/button/i[@class='fal fa-times']");
-
     private final By ADDPRODUCT = By.xpath("//button[text()='Add Product']");
     //private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
 
