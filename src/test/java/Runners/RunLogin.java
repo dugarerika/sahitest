@@ -7,6 +7,6 @@ import cucumber.api.CucumberOptions;
             glue = {"Steps"}
 )
 
-public class Run {
+public class RunLogin {
 
 }

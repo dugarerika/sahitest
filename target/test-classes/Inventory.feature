@@ -1,8 +1,7 @@
 Feature: Vendor Inventory
 
   Scenario: User should be able to access to the inventory section
-    Given user is on the vendor login page
-    And the user login into the vendor with Admin credentials
+    Given the user login into the vendor with Admin credentials
       | Email     | Password   |
       |testsalon | testsalon1o |
     When the user clicks on the inventory icon

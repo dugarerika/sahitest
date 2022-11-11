@@ -44,16 +44,6 @@ public class StepsLogInVendor {
     public void anErrorMessageIsDisplayed() {
         objLogin.chckMessageError("['The email and password combination is incorrect']");
     }
-
-    @When("the user enters credentials")
-    public void theUserEntersCredentials(DataTable table) {
-        List<List<String>> data = table.asLists(String.class);
-        System.out.print(data.get(1).get(0));
-        System.out.print(data.get(1).get(1));
-        if(data.get(1).get(0) == null) objLogin.fillLogin("", data.get(1).get(1));
-        else if (data.get(1).get(1) == null)  objLogin.fillLogin(data.get(1).get(0), "");
-        else objLogin.fillLogin(data.get(1).get(0), data.get(1).get(1));
-    }
     @When("the user left credentials empty")
     public void theUserLeftCredentialsEmpty() {
         System.out.println("Email and password credentials left empty");
@@ -67,5 +57,30 @@ public class StepsLogInVendor {
     @Then("error message Password is required displayed")
     public void errorMessagePasswordIsRequiredDisplayed() {
         objLogin.chckMessageVendor(" ","Password is required");
+    }
+    @When("the user enters credentials ([^\"]*) and ([^\"]*) and ([^\"]*)$")
+    public void theUserEntersCredentialsRoleEmailPassword(String Role, String Email, String Password) throws Throwable{
+        System.out.println("Role:" + Role);
+        if(Email == null) objLogin.fillLogin("", Password);
+        else if (Password == null)  objLogin.fillLogin(Email, "");
+        else objLogin.fillLogin(Email, Password);
+    }
+
+    @Given("the user login into the vendor with ([^\"]*) and ([^\"]*) from ([^\"]*) credentials$")
+    public void theUserLoginIntoTheVendorWithEmailAndPasswordFromRoleCredentials(String Email, String Password, String Role) throws Throwable{
+        System.out.println("Role:" + Role);
+        if(Email == null) objLogin.fillLogin("", Password);
+        else if (Password == null)  objLogin.fillLogin(Email, "");
+        else objLogin.fillLogin(Email, Password);
+    }
+
+    @When("the user enters credentials")
+    public void theUserEntersCredentials(DataTable table) {
+        List<List<String>> data = table.asLists(String.class);
+        System.out.print(data.get(1).get(0));
+        System.out.print(data.get(1).get(1));
+        if(data.get(1).get(0) == null) objLogin.fillLogin("", data.get(1).get(1));
+        else if (data.get(1).get(1) == null)  objLogin.fillLogin(data.get(1).get(0), "");
+        else objLogin.fillLogin(data.get(1).get(0), data.get(1).get(1));
     }
 }

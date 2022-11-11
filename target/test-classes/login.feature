@@ -1,13 +1,17 @@
 Feature: Vendor Login
 
-  Scenario: User should be able to login with valid credentials
+  Scenario Outline: User should be able to login with Admin valid credentials
     Given user is on the vendor login page
-    When the user enters credentials
-      | Email     | Password    |
-      | testsalon | testsalon1o |
+    When the user login into the vendor with <Email> and <Password> from <Role> credentials
     And hits SIGN IN
     Then the user should be logged successfully
     And Close browser
+    Examples:
+      |Role         | Email     | Password    |
+      |Admin        | testsalon | testsalon1o |
+      |Staff        | Nube      | 1234567890  |
+      |Read-Only    | readonly6 | 1234567890  |
+      |Receptionist | Atardecer | 1234567890  |
 
   Scenario: User should not be able to login with invalid credentials
     Given user is on the vendor login page
