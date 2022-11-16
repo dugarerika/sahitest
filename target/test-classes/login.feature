@@ -1,7 +1,9 @@
 Feature: Vendor Login
 
-  Scenario Outline: User should be able to login with Admin valid credentials
+  Background:
     Given user is on the vendor login page
+
+  Scenario Outline: User should be able to login with Admin valid credentials
     When the user login into the vendor with <Email> and <Password> from <Role> credentials
     And hits SIGN IN
     Then the user should be logged successfully
@@ -14,7 +16,6 @@ Feature: Vendor Login
       |Receptionist | Atardecer | 1234567890  |
 
   Scenario: User should not be able to login with invalid credentials
-    Given user is on the vendor login page
     When the user enters credentials
       | Email | Password |
       | testx | secretx  |
@@ -23,7 +24,6 @@ Feature: Vendor Login
     And Close browser
 
   Scenario: Email credential is required
-    Given user is on the vendor login page
     When the user enters credentials
       | Email | Password |
       |       | secretx  |
@@ -32,7 +32,6 @@ Feature: Vendor Login
     And Close browser
 
   Scenario: Password credential is required
-    Given user is on the vendor login page
     When the user enters credentials
       | Email | Password |
       | testx |          |
@@ -41,7 +40,6 @@ Feature: Vendor Login
     And Close browser
 
   Scenario: Email and password credentials are required
-    Given user is on the vendor login page
     When the user left credentials empty
     And hits SIGN IN
     Then error messages are displayed
