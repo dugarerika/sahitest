@@ -61,7 +61,7 @@ public class StepsLogInVendor {
     @When("the user enters credentials ([^\"]*) and ([^\"]*) and ([^\"]*)$")
     public void theUserEntersCredentialsRoleEmailPassword(String Role, String Email, String Password) throws Throwable{
         System.out.println("Role:" + Role);
-        if(Email == null) objLogin.fillLogin("", Password);
+        if (Email == null) objLogin.fillLogin("", Password);
         else if (Password == null)  objLogin.fillLogin(Email, "");
         else objLogin.fillLogin(Email, Password);
     }

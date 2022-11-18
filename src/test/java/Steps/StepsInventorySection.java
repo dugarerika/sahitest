@@ -15,6 +15,7 @@ import java.util.List;
 public class StepsInventorySection {
     LoginVendor objLogin = new LoginVendor();
     Inventory objInventory = new Inventory();
+
     @And("the user login into the vendor with Admin credentials")
     public void theUserLoginIntoTheVendorWithAdminCredentials(DataTable table) {
         List<List<String>> data = table.asLists(String.class);
@@ -59,5 +60,10 @@ public class StepsInventorySection {
 
     @And("click on the Submit button")
     public void clickOnTheSubmitButton() {objInventory.btnAddProductSubmit();
+    }
+
+    @And("the user enters ([^\"]*) and ([^\"]*) and ([^\"]*) and ([^\"]*) and ([^\"]*) and ([^\"]*) info$")
+    public void theUserEntersProductNameAndProductBrandAndProductCategoryAndProductQuantityAndProductSKUAndPriceInfo(String ProductName, String ProductBrand, String ProductCategory, String ProductQuantity, String ProductSKU, String Price) {
+        objInventory.fillForm(ProductName, ProductBrand, ProductCategory, ProductQuantity, ProductSKU, Price);
     }
 }
