@@ -66,4 +66,9 @@ public class StepsInventorySection {
     public void theUserEntersProductNameAndProductBrandAndProductCategoryAndProductQuantityAndProductSKUAndPriceInfo(String ProductName, String ProductBrand, String ProductCategory, String ProductQuantity, String ProductSKU, String Price) {
         objInventory.fillForm(ProductName, ProductBrand, ProductCategory, ProductQuantity, ProductSKU, Price);
     }
+
+    @Then("The ([^\"]*) is displayed$")
+    public void theExpectedMessageIsDisplayed(String ExpectedMessage) {
+        objInventory.chckExpectedMsg(ExpectedMessage);
+    }
 }

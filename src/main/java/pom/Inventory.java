@@ -25,12 +25,11 @@ public class Inventory {
     private final By PRODUCTQUANTITY = By.xpath("//div/label[text()='Product Quantity']//following-sibling::div/input");
     private final By PRODUCTSKU = By.xpath("//div/label[text()='Product SKU']//following-sibling::div/input");
     private final By PRODUCTPRICE = By.xpath("//div/label[text()='Price']//following-sibling::div/input");
-    private final By EXPECTEDMSG = By.xpath("");
+    private final By EXPECTEDMSG = By.xpath("//div[@role='alert']//child::div//following-sibling::div");
     private final By SUBMIT = By.xpath("//button[text()='Submit']");
 
     private final By ADDPRODSUBMIT = By.xpath("//button[text() = 'Submit']");
-
-    //private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
+    private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
 
 
 //    public Inventory fillInventory(String strUserName, String strPassword){
@@ -66,25 +65,25 @@ public class Inventory {
 
     public Inventory btnAddProductSubmit(){
         Utilities.clickWait(SUBMIT);
-        Utilities.wt( 2000);
+        Utilities.wt( 1000);
+        return this;
+    }
+
+    public Inventory chckExpectedMsg(String ExpectedMessage) {
+        Utilities.isElementPresent(EXPECTEDMSG);
+        Utilities.compareText(EXPECTEDMSG, ExpectedMessage);
         return this;
     }
 
     public Inventory fillForm(String ProductName, String ProductBrand, String ProductCategory, String ProductQuantity, String ProductSKU, String Price){
         Utilities.type(PRODUCTNAME, ProductName);
-        Utilities.wt( 1000);
         Utilities.type(PRODUCTSKU, ProductSKU);
-        Utilities.wt( 1000);
         Utilities.type(PRODUCTQUANTITY, ProductQuantity);
-        Utilities.wt( 1000);
         Utilities.type(PRODUCTPRICE, Price);
-        Utilities.wt( 1000);
         System.out.println(ProductBrand);
         System.out.println(ProductCategory);
         if (!Objects.equals(ProductBrand, "")) Utilities.clickEnter(PRODUCTBRAND);
-        Utilities.wt( 1000);
         if (!Objects.equals(ProductCategory, "")) Utilities.clickEnter(PRODUCTCATEGORY);
-        Utilities.wt( 2000);
         return this;
     }
 

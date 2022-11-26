@@ -1,6 +1,7 @@
 package pom;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import utils.Utilities;
 
 import java.util.Objects;
@@ -34,7 +35,7 @@ public class LoginVendor{
 
     public LoginVendor chckMessageError(String message3) {
         Utilities.wt( 1000);
-        Utilities.compareText(MESSAGEERROR, message3);
+        Assert.assertTrue( Utilities.compareText(MESSAGEERROR, message3));
         return this;
     }
 }
