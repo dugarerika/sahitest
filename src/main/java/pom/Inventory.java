@@ -9,7 +9,6 @@ public class Inventory {
 
     private final By INVENTORY = By.xpath("//div[@aria-label='Inventory']");
     private final By HEADER = By.xpath("//header/div/div/div[@class]");
-
     private final By ADDBRAND = By.xpath("//button[text()='Add Brand']");
     private final By MNGBRANDEDIT = By.xpath("//span[text()='LOL']//following-sibling::div/button[@aria-label='Edit']/i");
     private final By MNGBRANDDELETE = By.xpath("//span[text()='LOL']//following-sibling::div/button[@aria-label='Delete']/i");
@@ -27,6 +26,7 @@ public class Inventory {
     private final By PRODUCTPRICE = By.xpath("//div/label[text()='Price']//following-sibling::div/input");
     private final By EXPECTEDMSG = By.xpath("//div[@role='alert']//child::div//following-sibling::div");
     private final By SUBMIT = By.xpath("//button[text()='Submit']");
+    private final By CLOSEPRODUCT = By.xpath("//div[@role='dialog']/button/i[@class='fal fa-times']");
 
     private final By ADDPRODSUBMIT = By.xpath("//button[text() = 'Submit']");
     private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
@@ -38,6 +38,12 @@ public class Inventory {
 //
 //        return this;
 //    }
+
+    public Inventory btnCloseAddForm(){
+        Utilities.wt( 10);
+        Utilities.clickWait(CLOSEPRODUCT);
+        return this;
+    }
 
     public Inventory btnInventory(){
         Utilities.wt( 10);

@@ -1,10 +1,8 @@
 package testcases;
 
 import Steps.StepsLogInVendor;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pom.Inventory;
-import utils.Utilities;
 
 public class TestInventoryVendor {
 
@@ -13,10 +11,10 @@ public class TestInventoryVendor {
 
     Inventory objInventory = new Inventory();
 
-    @BeforeMethod
-    public void beforeMethod(){
-        Utilities.openUrl("https://vendor.bookr-dev.com");
-    }
+//    @BeforeMethod
+//    public void beforeMethod(){
+//        Utilities.openUrl("https://vendor.bookr-dev.com");
+//    }
     @Test
     public void testClickOnInventory() {
 

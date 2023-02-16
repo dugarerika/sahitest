@@ -13,8 +13,21 @@ import utils.Utilities;
 import java.util.List;
 
 public class StepsInventorySection {
-    LoginVendor objLogin = new LoginVendor();
+    static LoginVendor objLogin = new LoginVendor();
     Inventory objInventory = new Inventory();
+
+
+//    @BeforeAll
+//    public  void beforeAll() {
+//        Utilities.openUrl("https://vendor.bookr-dev.com");
+//        objLogin.fillLogin("testsalon", "testsalon1o");
+//        objLogin.btnlogInVendor();
+//    }
+
+    @After
+    public void afterScenario() {
+        Utilities.closeExplorer(); Utilities.closeProcess();
+    }
 
     @And("the user login into the vendor with Admin credentials")
     public void theUserLoginIntoTheVendorWithAdminCredentials(DataTable table) {
@@ -53,11 +66,6 @@ public class StepsInventorySection {
     public void theAddBrandFormIsDisplayed() {
     }
 
-    @After
-    public void afterScenario() {
-        Utilities.closeExplorer(); Utilities.closeProcess();
-    }
-
     @And("click on the Submit button")
     public void clickOnTheSubmitButton() {objInventory.btnAddProductSubmit();
     }
@@ -71,4 +79,15 @@ public class StepsInventorySection {
     public void theExpectedMessageIsDisplayed(String ExpectedMessage) {
         objInventory.chckExpectedMsg(ExpectedMessage);
     }
+
+    @And("clicks on close form")
+    public void clicksOnCloseForm() {
+        objInventory.btnCloseAddForm();
+    }
+
+//    @AfterAll
+//    public static void afterAll() {
+//        Utilities.closeExplorer(); Utilities.closeProcess();
+//        System.out.println("After All Hook");
+//    }
 }

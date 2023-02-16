@@ -4,10 +4,9 @@ import cucumber.api.CucumberOptions;
 
 @CucumberOptions(
             features = "src/test/resources/inventory.feature",
-            glue = {"Steps"}
-           // tags={"@After,@Regression"}
+            glue = {"Steps"},
+            tags = {"@AfterAll, @BeforeAll, @Regression, @After"}
 )
-
 public class RunInventory {
 
 }
