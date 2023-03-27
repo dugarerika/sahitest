@@ -2,7 +2,6 @@ package Steps;
 
 
 import io.cucumber.datatable.DataTable;
-import io.cucumber.java.After;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,10 +23,10 @@ public class StepsInventorySection {
 //        objLogin.btnlogInVendor();
 //    }
 
-    @After
-    public void afterScenario() {
-        Utilities.closeExplorer(); Utilities.closeProcess();
-    }
+//    @After
+//    public void afterScenario() {
+//        Utilities.closeExplorer(); Utilities.closeProcess();
+//    }
 
     @And("the user login into the vendor with Admin credentials")
     public void theUserLoginIntoTheVendorWithAdminCredentials(DataTable table) {
@@ -83,6 +82,11 @@ public class StepsInventorySection {
     @And("clicks on close form")
     public void clicksOnCloseForm() {
         objInventory.btnCloseAddForm();
+    }
+
+    @And("Close")
+    public void close_b() {
+        Utilities.closeExplorer(); Utilities.closeProcess();
     }
 
 //    @AfterAll

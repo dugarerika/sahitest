@@ -16,7 +16,7 @@ public class StepsLogInVendor {
 
     @Given("user is on the vendor login page")
     public void user_is_on_the_vendor_login_page() {
-        Utilities.openUrl("https://vendor.bookr-dev.com");
+        Utilities.openUrl("https://vendor.bookr.co");
         System.out.println("The vendor admin login page is displayed");
     }
 

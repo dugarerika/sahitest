@@ -10,7 +10,7 @@ public class TestHomeAdmin {
     TestLogInMaster objLogin = new TestLogInMaster();
     Create objCreate = new Create();
 
-    String strUrl = "https://master.bookr-dev.com/";
+    String strUrl = " https://vendor.bookr.co/";
 
     String[] rightsalon = new String[]{
             "test2",

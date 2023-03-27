@@ -7,7 +7,7 @@ import pom.Inventory;
 public class TestInventoryVendor {
 
     StepsLogInVendor objLogin = new StepsLogInVendor();
-    String strUrl = "https://master.bookr-dev.com";
+    String strUrl = "https://vendor.bookr.co/";
 
     Inventory objInventory = new Inventory();
 

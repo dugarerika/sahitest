@@ -95,6 +95,12 @@ public class Utilities {
 		ac.sendKeys(Keys.ENTER).perform();
 	}
 
+	public static void HooverClick(By by) {
+		ac = new Actions(driver);
+		ac.moveToElement(el(by));
+		ac.click().build().perform();
+	}
+
 	public static void Enter() {
 		ac.sendKeys(Keys.ENTER).perform();
 	}
