@@ -8,7 +8,8 @@ public class Calendar {
     private final By CALENDAR = By.xpath("//div[@aria-label='Calendar']");
     private final By HEADER = By.xpath("//header/div/div/div[@class]");
     private final By MODALTITTLE = By.xpath("//div/h6[text()='New Appointment']");
-    private final By SEARCHCOSTUMER = By.xpath("");
+    private final By SEARCHCOSTUMER = By.xpath("//div[text()='Search customers..']//parent::div//parent::div");
+    private final By COSTUMER = By.xpath("//div[text()='Search customers..']/following-sibling::div/input");
     private final By CATEGORY = By.xpath("//div/div[text()='Select category...']/following-sibling::div");
     private final By SERVICE = By.xpath("//div/div[text()='Select service..']/following-sibling::div");
     private final By CLOSEICON= By.xpath("//button[@aria-label='close']");
@@ -27,10 +28,9 @@ public class Calendar {
     private final By BTNEDITBOOKING = By.xpath("//div/button[text()='Edit Booking']");
     private final By BTNCHECKOUT = By.xpath("//div/button[text()='Checkout']");
 
-
-    public Calendar btnTimeSlot(String staff)
+    public Calendar btnTimeSlot(String staff, String time)
     {
-        final By TIMESLOT = By.xpath("//div[@class='rbc-time-content']//child::div["+staff+"]/div/div[@class='rbc-time-slot rbc-available']/span[text()='1:00 AM']");
+        final By TIMESLOT = By.xpath("//div[@class='rbc-time-content']//child::div["+staff+"]/div/div[@class='rbc-time-slot rbc-available']/span[text()='"+time+"']");
         Utilities.wt( 100);
         Utilities.HooverClick(TIMESLOT);
 
@@ -42,14 +42,14 @@ public class Calendar {
     }
 
     public Calendar btnCalendar(){
-        Utilities.wt( 10);
+        Utilities.wt( 1000);
         Utilities.clickWait(CALENDAR);
         return this;
     }
 
     public Calendar chckMessage(String message1) {
         Utilities.isElementPresent(HEADER);
-        Utilities.wt( 2000);
+        Utilities.wt( 1000);
         Utilities.compareText(HEADER, message1);
         return this;
     }
@@ -86,6 +86,14 @@ public class Calendar {
     public Calendar btnWalkin(){
         Utilities.wt( 10);
         Utilities.clickWait(BTNWALKIN);
+        return this;
+    }
+
+    public Calendar fillSearchCustomer(String strCustomer){
+        Utilities.isElementPresent(MODALTITTLE);
+        Utilities.Tabs(strCustomer);
+        Utilities.wt( 10000);
+        Utilities.Enter();
         return this;
     }
 }

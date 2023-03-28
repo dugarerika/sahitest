@@ -33,7 +33,7 @@ Feature: Vendor Login
     Then error messages are displayed
     And Close browser
 
-  Scenario Outline: User should be able to login with Admin valid credentials
+  Scenario Outline: User should be able to login with different Roles valid credentials
     When the user login into the vendor with <Email> and <Password> from <Role> credentials
     And hits SIGN IN
     Then the user should be logged successfully

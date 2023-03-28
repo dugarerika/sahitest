@@ -24,7 +24,7 @@ Feature: Vendor Inventory
     And clicks on close form
     And Close
 
-  Scenario Outline: Verify required fields on Add Brand form
+  Scenario Outline: Verify required fields on Add Brand form and the expected message
     When the user clicks on the inventory icon
     And the user clicks on the ADD PRODUCT button
     And the user enters <ProductName> and <ProductBrand> and <ProductCategory> and <ProductQuantity> and <ProductSKU> and <Price> info

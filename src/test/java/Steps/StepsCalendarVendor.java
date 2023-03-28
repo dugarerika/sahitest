@@ -47,11 +47,6 @@ public class StepsCalendarVendor {
         objCalendar.SelectCategory();
     }
 
-    @Given("user is on the new appointment modal")
-    public void userIsOnTheNewAppointmentModal() {
-        objCalendar.btnTimeSlot("3");
-    }
-
     @And("the user select category")
     public void theUserSelectCategory() {
         objCalendar.SelectCategory();
@@ -71,7 +66,7 @@ public class StepsCalendarVendor {
     public void theWalkingAppointmentIsCreatedSuccessfully(DataTable tableslots) {
         List<List<String>> data = tableslots.asLists(String.class);
         System.out.println("Time:" + data.get(1).get(1));
-        objCalendar.btnTimeSlot(data.get(1).get(0));
+        objCalendar.btnTimeSlot(data.get(1).get(0),data.get(1).get(1));
         objCalendar.checkApptBox();
     }
 
@@ -85,7 +80,22 @@ public class StepsCalendarVendor {
     public void theUserClicksOnTheCalendarTimeSlot(DataTable tableslots) {
         List<List<String>> data = tableslots.asLists(String.class);
         System.out.println("Time:" + data.get(1).get(1));
-        objCalendar.btnTimeSlot(data.get(1).get(0));
+        objCalendar.btnTimeSlot(data.get(1).get(0),data.get(1).get(1));
     }
 
+    @And("the user search a customer from the vendor")
+    public void theUserSearchACustomerFromTheVendor(DataTable tableuser){
+        List<List<String>> datauser0 = tableuser.asLists(String.class);
+        System.out.println("First Name:" + datauser0.get(1).get(0));
+        System.out.println("Phone Number:" + datauser0.get(1).get(1));
+        objCalendar.fillSearchCustomer(datauser0.get(1).get(1));
+    }
+
+    @And("the user search a customer by name from the vendor")
+    public void theUserSearchACustomerByNameFromTheVendor(DataTable tableuser){
+        List<List<String>> datauser = tableuser.asLists(String.class);
+        System.out.println("First Name:" + datauser.get(1).get(0));
+        System.out.println("Phone Number:" + datauser.get(1).get(1));
+        objCalendar.fillSearchCustomer(datauser.get(1).get(0));
+    }
 }
