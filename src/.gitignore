@@ -165,7 +165,7 @@ $RECYCLE.BIN/
 *.iws
 *.iml
 *.ipr
-*/chromedriver
+*/chromedriver.exe
 
 ### NetBeans ###
 /nbproject/private/
