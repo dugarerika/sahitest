@@ -16,7 +16,7 @@ public class StepsLogInVendor {
 
     @Given("user is on the vendor login page")
     public void user_is_on_the_vendor_login_page() {
-        Utilities.openUrl("https://vendor.bookr-dev.com");
+        Utilities.openUrl("https://vendor.bookr.co");
         System.out.println("The vendor admin login page is displayed");
     }
 
@@ -61,7 +61,7 @@ public class StepsLogInVendor {
     @When("the user enters credentials ([^\"]*) and ([^\"]*) and ([^\"]*)$")
     public void theUserEntersCredentialsRoleEmailPassword(String Role, String Email, String Password) throws Throwable{
         System.out.println("Role:" + Role);
-        if(Email == null) objLogin.fillLogin("", Password);
+        if (Email == null) objLogin.fillLogin("", Password);
         else if (Password == null)  objLogin.fillLogin(Email, "");
         else objLogin.fillLogin(Email, Password);
     }

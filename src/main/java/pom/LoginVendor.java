@@ -1,6 +1,7 @@
 package pom;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import utils.Utilities;
 
 import java.util.Objects;
@@ -11,7 +12,7 @@ public class LoginVendor{
     private final By LOGIN = By.xpath("//button[text()='Sign in']");
     private final By MESSAGEUSERNAME = By.id("mui-1-helper-text");
     private final By MESSAGEPWD = By.id("mui-2-helper-text");
-    private final By MESSAGEERROR = By.xpath("//div/p[@class='styles_error__1kXZV']");
+    private final By MESSAGEERROR = By.xpath("//div/div/div/form/div/p[text()]");
 
 
     public LoginVendor fillLogin(String strUserName, String strPassword){
@@ -34,7 +35,7 @@ public class LoginVendor{
 
     public LoginVendor chckMessageError(String message3) {
         Utilities.wt( 1000);
-        Utilities.compareText(MESSAGEERROR, message3);
+        Assert.assertTrue( Utilities.compareText(MESSAGEERROR, message3));
         return this;
     }
 }

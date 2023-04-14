@@ -14,15 +14,15 @@ import java.util.List;
 
 
 public class Utilities {
-	public static WebDriver driver;
-	private static Actions ac;
-	public static WebDriverWait wait;
+	static WebDriver driver;
+	static Actions ac;
+	static WebDriverWait wait;
 
 	
 	public static void openUrl(String strUrl){
 		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
 		driver = new ChromeDriver();
-//		wait = new WebDriverWait(driver, 10);
+		wait = new WebDriverWait(driver, 10);
 		driver.get(strUrl);
 		driver.manage().window().maximize();
 		ac = new Actions(driver);
@@ -95,6 +95,19 @@ public class Utilities {
 		ac.sendKeys(Keys.ENTER).perform();
 	}
 
+	public static void Tabs(String str) {
+		ac.sendKeys(Keys.TAB).perform();
+		ac.sendKeys(Keys.TAB).perform();
+		ac.sendKeys(Keys.TAB).perform();
+		ac.sendKeys(str).perform();
+	}
+
+	public static void HooverClick(By by) {
+		ac = new Actions(driver);
+		ac.moveToElement(el(by));
+		ac.click().build().perform();
+	}
+
 	public static void Enter() {
 		ac.sendKeys(Keys.ENTER).perform();
 	}
@@ -161,7 +174,7 @@ public class Utilities {
 
 	public static boolean compareText(By by, String str) {
 		String text = getText(by);
-		System.out.println(str);
+		System.out.println(text);
 		if (str.equals(text)) {
 			System.out.println("true");
 			return true;
