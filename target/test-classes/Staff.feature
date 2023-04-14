@@ -3,8 +3,8 @@ Feature: Vendor Staff
   Background:
     Given user is on the vendor login page
     And the user login into the vendor with Admin credentials
-      | Email     | Password   |
-      |testsalon | testsalon1o |
+      | Email | Password |
+      | qatartest | qatartest |
 
 
   Scenario: User should be able to access to the Staff  section
