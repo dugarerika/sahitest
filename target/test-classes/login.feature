@@ -6,7 +6,7 @@ Feature: Vendor Login
   Scenario: User should not be able to login with invalid credentials
     When the user enters credentials
       | Email | Password |
-      | testx | secretx  |
+      | qatartest | qatartest |
     And hits SIGN IN
     Then An error message is displayed
     And Close browser
