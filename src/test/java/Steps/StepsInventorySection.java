@@ -31,8 +31,6 @@ public class StepsInventorySection {
     @And("the user login into the vendor with Admin credentials")
     public void theUserLoginIntoTheVendorWithAdminCredentials(DataTable table) {
         List<List<String>> data = table.asLists(String.class);
-        System.out.print(data.get(1).get(0));
-        System.out.print(data.get(1).get(1));
         objLogin.fillLogin(data.get(1).get(0), data.get(1).get(1));
         objLogin.btnlogInVendor();
     }
@@ -63,6 +61,7 @@ public class StepsInventorySection {
 
     @Then("the Add Brand form is displayed")
     public void theAddBrandFormIsDisplayed() {
+
     }
 
     @And("click on the Submit button")
@@ -87,6 +86,27 @@ public class StepsInventorySection {
     @And("Close")
     public void close_b() {
         Utilities.closeExplorer(); Utilities.closeProcess();
+    }
+
+    @When("the user clicks on the + icon")
+    public void theUserClicksOnTheIcon() {
+        objInventory.btnInventory();
+        objInventory.btnAddBrand();
+        objInventory.btnAddIcon();
+    }
+
+    @And("type a New Brand")
+    public void typeANewBrand() {
+        objInventory.fillBrandName("NUEVA");
+    }
+
+    @And("Click on CREATE button")
+    public void clickOnCREATEButton() {
+        objInventory.btnAddCreate();
+    }
+
+    @Then("the new brand is added successfully")
+    public void theNewBrandIsAddedSuccessfully() {
     }
 
 //    @AfterAll

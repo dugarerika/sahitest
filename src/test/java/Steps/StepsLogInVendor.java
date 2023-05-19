@@ -14,11 +14,11 @@ public class StepsLogInVendor {
 
     LoginVendor objLogin = new LoginVendor();
 
-    @Given("user is on the vendor login page")
-    public void user_is_on_the_vendor_login_page() {
-        Utilities.openUrl("https://vendor.bookr.co");
-        System.out.println("The vendor admin login page is displayed");
-    }
+//    @Given("user is on the vendor login page ([^\"]*)$")
+//    public void user_is_on_the_vendor_login_page() {
+//        Utilities.openUrl("https://vendor.bookr.co");
+//        System.out.println("The vendor admin login page is displayed");
+//    }
 
     @And("hits SIGN IN")
     public void hits_SIGN_IN() {
@@ -82,5 +82,13 @@ public class StepsLogInVendor {
         if(data.get(1).get(0) == null) objLogin.fillLogin("", data.get(1).get(1));
         else if (data.get(1).get(1) == null)  objLogin.fillLogin(data.get(1).get(0), "");
         else objLogin.fillLogin(data.get(1).get(0), data.get(1).get(1));
+    }
+
+    @Given("user is on the vendor login page")
+    public void user_is_on_the_vendor_login_page(DataTable table) {
+        List<List<String>> data = table.asLists(String.class);
+        System.out.print(data.get(1).get(0));
+        Utilities.openUrl(data.get(1).get(0));
+        System.out.println("The vendor admin login page is displayed");
     }
 }

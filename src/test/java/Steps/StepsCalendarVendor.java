@@ -62,7 +62,7 @@ public class StepsCalendarVendor {
         objCalendar.btnCreate();
     }
 
-    @Then("The walking appointment is created successfully")
+    @Then("The appointment is created successfully")
     public void theWalkingAppointmentIsCreatedSuccessfully(DataTable tableslots) {
         List<List<String>> data = tableslots.asLists(String.class);
         System.out.println("Time:" + data.get(1).get(1));

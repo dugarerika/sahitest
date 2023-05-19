@@ -1,6 +1,7 @@
 package pom;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import utils.Utilities;
 
 import java.util.Objects;
@@ -10,6 +11,9 @@ public class Inventory {
     private final By INVENTORY = By.xpath("//div[@aria-label='Inventory']");
     private final By HEADER = By.xpath("//header/div/div/div[@class]");
     private final By ADDBRAND = By.xpath("//button[text()='Add Brand']");
+    private final By ADDICON = By.xpath("//*[@data-testid='AddIcon']//parent::button");
+    private final By INPUTBRANDNAME = By.xpath("//input[@placeholder='Brand name']");
+    private final By BTNCREATE = By.xpath("//button[text()='CREATE']");
     private final By MNGBRANDEDIT = By.xpath("//span[text()='LOL']//following-sibling::div/button[@aria-label='Edit']/i");
     private final By MNGBRANDDELETE = By.xpath("//span[text()='LOL']//following-sibling::div/button[@aria-label='Delete']/i");
     private final By BRANDDELETE = By.xpath("//*/button[text()='Delete']");
@@ -24,20 +28,13 @@ public class Inventory {
     private final By PRODUCTQUANTITY = By.xpath("//div/label[text()='Product Quantity']//following-sibling::div/input");
     private final By PRODUCTSKU = By.xpath("//div/label[text()='Product SKU']//following-sibling::div/input");
     private final By PRODUCTPRICE = By.xpath("//div/label[text()='Price']//following-sibling::div/input");
-    private final By EXPECTEDMSG = By.xpath("//div[@role='alert']//child::div//following-sibling::div");
+    private final By ACTUALMSG = By.xpath("//div[@role='alert']//child::div//following-sibling::div");
     private final By SUBMIT = By.xpath("//button[text()='Submit']");
     private final By CLOSEPRODUCT = By.xpath("//div[@role='dialog']/button/i[@class='fal fa-times']");
 
     private final By ADDPRODSUBMIT = By.xpath("//button[text() = 'Submit']");
     private final By MESSAGEERROR = By.xpath("//p[@class='styles_error__1kXZV']");
 
-
-//    public Inventory fillInventory(String strUserName, String strPassword){
-//        Utilities.type(, strUserName);
-//        Utilities.type(,strPassword);
-//
-//        return this;
-//    }
 
     public Inventory btnCloseAddForm(){
         Utilities.wt( 10);
@@ -53,7 +50,16 @@ public class Inventory {
 
     public Inventory btnAddBrand(){
         Utilities.clickWait(ADDBRAND);
-        Utilities.clickWait(MNGBRANDCLOSE);
+        return this;
+    }
+
+    public Inventory btnAddIcon(){
+        Utilities.clickWait(ADDICON);
+        return this;
+    }
+
+    public Inventory btnAddCreate(){
+        Utilities.clickWait(BTNCREATE);
         return this;
     }
 
@@ -76,8 +82,11 @@ public class Inventory {
     }
 
     public Inventory chckExpectedMsg(String ExpectedMessage) {
-        Utilities.isElementPresent(EXPECTEDMSG);
-        Utilities.compareText(EXPECTEDMSG, ExpectedMessage);
+        Utilities.isElementPresent(ACTUALMSG);
+        System.out.println("Expected Message:" + ExpectedMessage);
+        System.out.println("Actual Message:" + Utilities.gText(ACTUALMSG));
+        Assert.assertTrue(Utilities.compareText(ACTUALMSG, ExpectedMessage));
+        System.out.println("passed");
         return this;
     }
 
@@ -86,8 +95,6 @@ public class Inventory {
         Utilities.type(PRODUCTSKU, ProductSKU);
         Utilities.type(PRODUCTQUANTITY, ProductQuantity);
         Utilities.type(PRODUCTPRICE, Price);
-        System.out.println(ProductBrand);
-        System.out.println(ProductCategory);
         if (!Objects.equals(ProductBrand, "")) Utilities.clickEnter(PRODUCTBRAND);
         if (!Objects.equals(ProductCategory, "")) Utilities.clickEnter(PRODUCTCATEGORY);
         return this;
@@ -100,8 +107,12 @@ public class Inventory {
         return this;
     }
 
-//    public Inventory chckMessageError(String message3) {
-//        Utilities.compareText(MESSAGEERROR, message3);
-//        return this;
-//    }
+    public Inventory fillBrandName(String BranName)
+    {
+        Utilities.isElementPresent(INPUTBRANDNAME);
+        Utilities.clickWait(INPUTBRANDNAME);
+        Utilities.type(INPUTBRANDNAME,BranName);
+        return this;
+    }
+
 }

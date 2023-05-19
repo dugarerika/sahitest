@@ -1,12 +1,12 @@
 package Runners;
 
-import cucumber.api.CucumberOptions;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
-@CucumberOptions(
-            features = "src/test/resources/inventory.feature",
-            glue = {"Steps"},
-            tags = {"@AfterAll, @BeforeAll, @Regression, @After"}
-)
+@RunWith(Cucumber.class)
+
+@CucumberOptions( features = "src/test/resources/features/", glue = "Steps", monochrome = true)
 public class RunInventory {
 
 }

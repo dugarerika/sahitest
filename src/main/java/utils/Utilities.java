@@ -20,7 +20,7 @@ public class Utilities {
 
 	
 	public static void openUrl(String strUrl){
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
+		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver");
 		driver = new ChromeDriver();
 		wait = new WebDriverWait(driver, 10);
 		driver.get(strUrl);
@@ -86,8 +86,13 @@ public class Utilities {
 		el(by).click();
 	}
 
-	public static void clickWait(By by) {
+	public static boolean clickWait(By by) {
+		try{
 		wait.until(ExpectedConditions.elementToBeClickable(by)).click();
+		return true;
+	} catch (NoSuchElementException | TimeoutException e) {
+		return false;
+	}
 	}
 
 	public static void clickEnter(By by) {
@@ -172,14 +177,19 @@ public class Utilities {
 		System.out.print(text);
 	}
 
+	public static String gText(By by) {
+		String text = getText(by);
+		return(text);
+	}
+
 	public static boolean compareText(By by, String str) {
 		String text = getText(by);
 		System.out.println(text);
 		if (str.equals(text)) {
-			System.out.println("true");
+			System.out.println("passed");
 			return true;
 		}
-		else System.out.println("false");
+		else System.out.println("fail");
 		return false;
 	}
 	}

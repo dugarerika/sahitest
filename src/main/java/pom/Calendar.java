@@ -1,10 +1,17 @@
 package pom;
 
 import org.openqa.selenium.By;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
 import utils.Utilities;
+
+import java.util.Arrays;
+
+import static utils.Utilities.isElementPresent;
 
 public class Calendar {
 
+    SoftAssert softAssert = new SoftAssert();
     private final By CALENDAR = By.xpath("//div[@aria-label='Calendar']");
     private final By HEADER = By.xpath("//header/div/div/div[@class]");
     private final By MODALTITTLE = By.xpath("//div/h6[text()='New Appointment']");
@@ -32,12 +39,11 @@ public class Calendar {
     {
         final By TIMESLOT = By.xpath("//div[@class='rbc-time-content']//child::div["+staff+"]/div/div[@class='rbc-time-slot rbc-available']/span[text()='"+time+"']");
         Utilities.wt( 100);
-        Utilities.HooverClick(TIMESLOT);
-
-//         if (Utilities.isElementPresent(TIMESLOT))
-//        {
-//            Utilities.clickWait(TIMESLOT);
-//        }
+        if (Utilities.isElementPresent(TIMESLOT))
+        {
+            Utilities.clickWait(TIMESLOT);
+            Utilities.HooverClick(TIMESLOT);
+        }
         return this;
     }
 
@@ -48,19 +54,25 @@ public class Calendar {
     }
 
     public Calendar chckMessage(String message1) {
-        Utilities.isElementPresent(HEADER);
+        isElementPresent(HEADER);
         Utilities.wt( 1000);
         Utilities.compareText(HEADER, message1);
         return this;
     }
     public Calendar chckModal() {
-        Utilities.isElementPresent(MODALTITTLE);
+        Assert.assertTrue(isElementPresent(MODALTITTLE));
+//        softAssert.assertAll();
         return this;
     }
     public Calendar closeIcon() {
-        Utilities.clickWait(CLOSEICON);
+        if(isElementPresent(CLOSEICON)) {
+            Utilities.clickWait(CLOSEICON);
+        } else {
+            Assert.fail();
+        }
         return this;
     }
+
     public Calendar SelectCategory() {
         Utilities.clickEnter(CATEGORY);
         return this;
@@ -76,11 +88,10 @@ public class Calendar {
         return this;
     }
     public Calendar checkApptBox(){
-        Utilities.isElementPresent(TXTWALKIN);
-        Utilities.isElementPresent(STATUS);
-        Utilities.isElementPresent(BTNBOOKINGINFO);
-        Utilities.isElementPresent(BTNEDITBOOKING);
-        Utilities.isElementPresent(BTNCHECKOUT);
+        for (By by : Arrays.asList(TXTWALKIN, STATUS, BTNBOOKINGINFO, BTNEDITBOOKING, BTNCHECKOUT)) {
+            softAssert.assertTrue(isElementPresent(by));
+        }
+        //        softAssert.assertAll();
         return this;
     }
     public Calendar btnWalkin(){
@@ -90,10 +101,11 @@ public class Calendar {
     }
 
     public Calendar fillSearchCustomer(String strCustomer){
-        Utilities.isElementPresent(MODALTITTLE);
+        softAssert.assertTrue(isElementPresent(MODALTITTLE));
         Utilities.Tabs(strCustomer);
         Utilities.wt( 10000);
         Utilities.Enter();
+//        softAssert.assertAll();
         return this;
     }
 }
