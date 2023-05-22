@@ -5,8 +5,6 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-
-@CucumberOptions( features = "src/test/resources/features/", glue = "Steps", monochrome = true)
-public class RunInventory {
+@CucumberOptions( features = "src/test/resources/features/", glue = "Steps") public class RunnerTests {
 
 }

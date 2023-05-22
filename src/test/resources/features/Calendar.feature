@@ -3,7 +3,7 @@ Feature: Calendar - Create Booking
   Scenario: User should be able to access to the calendar section
     Given user is on the vendor login page
       | URL |
-      | https://vendor.bookr-dev.com/ |
+      | https://vendor.bookr.co/ |
     And the user login into the vendor with Admin credentials
       | Email | Password |
       | testsalon | testsalon1o |
