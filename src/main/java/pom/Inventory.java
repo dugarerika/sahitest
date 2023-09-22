@@ -71,7 +71,6 @@ public class Inventory {
 
     public Inventory btnAddProductSubmit(){
         Utilities.clickWait(SUBMIT);
-        Utilities.wt( 1000);
         return this;
     }
 

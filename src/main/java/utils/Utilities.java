@@ -20,7 +20,8 @@ public class Utilities {
 
 	
 	public static void openUrl(String strUrl){
-		System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver/chromedriver.exe");
+
+		System.setProperty("webdriver.chrome.driver", "/Users/erikadugar/GitHub/sahitest/src/main/resources/chromedriver/chromedriver");
 		driver = new ChromeDriver();
 		wait = new WebDriverWait(driver, 10);
 		driver.get(strUrl);

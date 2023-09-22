@@ -1,5 +1,6 @@
 package Steps;
 
+
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -61,16 +62,16 @@ public class StepsLogInVendor {
     @When("the user enters credentials ([^\"]*) and ([^\"]*) and ([^\"]*)$")
     public void theUserEntersCredentialsRoleEmailPassword(String Role, String Email, String Password) throws Throwable{
         System.out.println("Role:" + Role);
-        if (Email == null) objLogin.fillLogin("", Password);
-        else if (Password == null)  objLogin.fillLogin(Email, "");
+        if (Email == null) objLogin.fillLogin(" ", Password);
+        else if (Password == null)  objLogin.fillLogin(Email, " ");
         else objLogin.fillLogin(Email, Password);
     }
 
     @Given("the user login into the vendor with ([^\"]*) and ([^\"]*) from ([^\"]*) credentials$")
     public void theUserLoginIntoTheVendorWithEmailAndPasswordFromRoleCredentials(String Email, String Password, String Role) throws Throwable{
         System.out.println("Role:" + Role);
-        if(Email == null) objLogin.fillLogin("", Password);
-        else if (Password == null)  objLogin.fillLogin(Email, "");
+        if(Email == null) objLogin.fillLogin(" ", Password);
+        else if (Password == null)  objLogin.fillLogin(Email, " ");
         else objLogin.fillLogin(Email, Password);
     }
 

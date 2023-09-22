@@ -1,3 +1,4 @@
+# Project exclude paths
 /target/
 !.mvn/wrapper/maven-wrapper.jar
 
